@@ -25,5 +25,9 @@ export class LoginPage implements OnInit {
        window.alert(error.message)
       }
       )}
+  registerPage(){
+      this.router.navigate(['/registration']);
+      }
+
 
 }
