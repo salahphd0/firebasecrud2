@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './shared/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    public authServise: AuthenticationService,
+    public router: Router,
+
+  ) {
+    this.initializeApp();
+  }
+  initializeApp(){
+    if(this.authServise.isLoggedIn){
+      this.router.navigate(['members'])
+
+    }else{
+      this.router.navigate(['login'])
+
+    }
+  }
+
 }
